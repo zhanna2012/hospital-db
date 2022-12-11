@@ -1,0 +1,19 @@
+<form mat-dialog-content [formGroup]="form " >
+  <mat-form-field appearance="fill">
+    <mat-label>Enter name</mat-label>
+    <input matInput formControlName="DoctorName">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Choose speciality</mat-label>
+    <mat-select formControlName="DoctorSpeciality">
+      <mat-option *ngFor="let item of specialities"
+                  [value]="item.DoctorSpecialityId"
+      >{{item.DoctorSpecialityName}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</form>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Close</button>
+  <button mat-button [mat-dialog-close]="form.getRawValue()"
+          [disabled]="!form.valid">{{ data ? 'Update' : 'Add' }}</button>
+</div>

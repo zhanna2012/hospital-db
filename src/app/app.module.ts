@@ -9,14 +9,28 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatButtonModule } from "@angular/material/button";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SidenavListComponent } from './sidenav-list/sidenav-list.component';
-import {MatListModule} from "@angular/material/list";
-import {MatSidenavModule} from "@angular/material/sidenav";
+import { MatListModule } from "@angular/material/list";
+import { MatSidenavModule } from "@angular/material/sidenav";
+import { DoctorComponent } from './doctor/doctor.component';
+import { ApiRequestsService } from "./services/api-requests.service";
+import { HttpClientModule } from "@angular/common/http";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatTableModule} from "@angular/material/table";
+import {MatInputModule} from "@angular/material/input";
+import { DialogDoctorComponent } from './dialog-doctor/dialog-doctor.component';
+import {MatDialogModule} from "@angular/material/dialog";
+import {ReactiveFormsModule} from "@angular/forms";
+import {MatSelectModule} from "@angular/material/select";
+import { PatientComponent } from './patient/patient.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    SidenavListComponent
+    SidenavListComponent,
+    DoctorComponent,
+    DialogDoctorComponent,
+    PatientComponent
   ],
   imports: [
     BrowserModule,
@@ -26,9 +40,16 @@ import {MatSidenavModule} from "@angular/material/sidenav";
     MatButtonModule,
     BrowserAnimationsModule,
     MatListModule,
-    MatSidenavModule
+    MatSidenavModule,
+    HttpClientModule,
+    MatFormFieldModule,
+    MatTableModule,
+    MatInputModule,
+    MatDialogModule,
+    ReactiveFormsModule,
+    MatSelectModule
   ],
-  providers: [],
+  providers: [ApiRequestsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
