@@ -22,6 +22,7 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatSelectModule} from "@angular/material/select";
 import { PatientComponent } from './patient/patient.component';
+import { DialogPatientComponent } from './dialog-patient/dialog-patient.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { PatientComponent } from './patient/patient.component';
     SidenavListComponent,
     DoctorComponent,
     DialogDoctorComponent,
-    PatientComponent
+    PatientComponent,
+    DialogPatientComponent
   ],
   imports: [
     BrowserModule,

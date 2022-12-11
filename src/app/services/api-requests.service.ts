@@ -3,6 +3,7 @@ import {Observable} from "rxjs";
 import {DoctorModel, DoctorModelUpdate} from "../interfaces/doctor.model";
 import {HttpClient} from "@angular/common/http";
 import {SpecialityModel} from "../interfaces/speciality.model";
+import {PatientModel} from "../interfaces/patient.model";
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +32,22 @@ export class ApiRequestsService {
 
   getSpecialities() :Observable<SpecialityModel[]> {
     return this.http.get<SpecialityModel[]>(`${this.baseUrl}/DoctorSpeciality`)
+  }
+
+  getPatients() : Observable<PatientModel[]> {
+    return this.http.get<PatientModel[]>(`${this.baseUrl}/Patient`)
+  }
+
+  addPatient(patient: PatientModel) : Observable<any> {
+    return this.http.post(`${this.baseUrl}/Patient`, {...patient})
+  }
+
+  deletePatient(patientId: number) : Observable<any> {
+    return this.http.delete(`${this.baseUrl}/Patient/${patientId}`)
+  }
+
+  updatePatient(patient: PatientModel) : Observable<any> {
+    return this.http.put(`${this.baseUrl}/Patient`, {...patient})
   }
 
 }

@@ -30,7 +30,7 @@ export class DoctorComponent implements OnInit{
     })
   }
 
-  openDialog(data?: DoctorModel): void {
+  openDialog(): void {
     const dialogRef = this.dialog.open(DialogDoctorComponent, {});
 
     dialogRef.afterClosed().subscribe(result => {

@@ -1,0 +1,15 @@
+<form mat-dialog-content [formGroup]="form" >
+  <mat-form-field appearance="fill">
+    <mat-label>Enter name</mat-label>
+    <input matInput formControlName="PatientName">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Enter email</mat-label>
+    <input matInput formControlName="PatientEmail">
+  </mat-form-field>
+</form>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Close</button>
+  <button mat-button [mat-dialog-close]="form.getRawValue()"
+          [disabled]="!form.valid">{{ data ? 'Update' : 'Add' }}</button>
+</div>
