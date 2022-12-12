@@ -4,6 +4,8 @@ import {DoctorModel, DoctorModelUpdate} from "../interfaces/doctor.model";
 import {HttpClient} from "@angular/common/http";
 import {SpecialityModel} from "../interfaces/speciality.model";
 import {PatientModel} from "../interfaces/patient.model";
+import {AppointmentModel, AppointmentModelUpdate} from "../interfaces/appointment.model";
+import {HospitalRoomModel} from "../interfaces/hospital-room.model";
 
 @Injectable({
   providedIn: 'root'
@@ -48,6 +50,26 @@ export class ApiRequestsService {
 
   updatePatient(patient: PatientModel) : Observable<any> {
     return this.http.put(`${this.baseUrl}/Patient`, {...patient})
+  }
+
+  getAppointments() : Observable<AppointmentModel[]> {
+    return this.http.get<AppointmentModel[]>(`${this.baseUrl}/Appointment`)
+  }
+
+  addAppointment(appointment: AppointmentModel) : Observable<any> {
+    return this.http.post(`${this.baseUrl}/Appointment`, {...appointment})
+  }
+
+  deleteAppointment(appointmentId: number) : Observable<any> {
+    return this.http.delete(`${this.baseUrl}/Appointment/${appointmentId}`)
+  }
+
+  updateAppointment(appointment: AppointmentModelUpdate) : Observable<any> {
+    return this.http.put(`${this.baseUrl}/Appointment`, {...appointment})
+  }
+
+  getRooms() : Observable<HospitalRoomModel[]> {
+    return this.http.get<HospitalRoomModel[]>(`${this.baseUrl}/HospitalRoom`)
   }
 
 }

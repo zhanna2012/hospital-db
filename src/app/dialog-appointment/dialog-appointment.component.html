@@ -1,0 +1,43 @@
+<form mat-dialog-content [formGroup]="form " >
+  <mat-form-field appearance="fill">
+    <mat-label>Enter date</mat-label>
+    <input matInput formControlName="AppointmentDate" type="date">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Enter start time</mat-label>
+    <input matInput formControlName="AppointmentStartTime" type="time">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Enter end time</mat-label>
+    <input matInput formControlName="AppointmentEndTime" type="time">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Choose doctor</mat-label>
+    <mat-select formControlName="AppointmentDoctorId">
+      <mat-option *ngFor="let item of doctors"
+                  [value]="item.DoctorId"
+      >{{item.DoctorName}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Choose patient</mat-label>
+    <mat-select formControlName="AppointmentPatientId">
+      <mat-option *ngFor="let item of patients"
+                  [value]="item.PatientId"
+      >{{item.PatientName}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Choose room number</mat-label>
+    <mat-select formControlName="AppointmentRoomNumber">
+      <mat-option *ngFor="let item of rooms"
+                  [value]="item.HospitalRoomNumber"
+      >{{item.HospitalRoomNumber}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</form>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Close</button>
+  <button mat-button [mat-dialog-close]="form.getRawValue()"
+          [disabled]="!form.valid">{{ data ? 'Update' : 'Add' }}</button>
+</div>
