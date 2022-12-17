@@ -15,6 +15,9 @@ export class AppointmentComponent  implements OnInit {
   constructor(private apiRequestService: ApiRequestsService, public dialog: MatDialog) {
     this.hasChanges$.next(true);
   }
+
+  applyFilter = false;
+
   displayedColumns: string[] = ['AppointmentId',
     'AppointmentDate',
     'AppointmentStartTime',
@@ -38,6 +41,11 @@ export class AppointmentComponent  implements OnInit {
 
   formatTime(time: string) {
     return time.substring(0, 5);
+  }
+
+  showToday() {
+    this.applyFilter = !this.applyFilter;
+    this.hasChanges$.next(true);
   }
 
   openDialog(): void {
@@ -70,7 +78,13 @@ export class AppointmentComponent  implements OnInit {
 
   ngOnInit(): void {
     this.gridData$ = this.hasChanges$.pipe(
-      switchMap(() => this.apiRequestService.getAppointments()),
+      switchMap(() => {
+        if(this.applyFilter) {
+          return this.apiRequestService.getTodayAppointments()
+        } else {
+          return this.apiRequestService.getAppointments()
+        }
+      }),
     )
   }
 }

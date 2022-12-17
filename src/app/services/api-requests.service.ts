@@ -72,4 +72,7 @@ export class ApiRequestsService {
     return this.http.get<HospitalRoomModel[]>(`${this.baseUrl}/HospitalRoom`)
   }
 
+  getTodayAppointments() : Observable<AppointmentModel[]> {
+    return this.http.get<AppointmentModel[]>(`${this.baseUrl}/FilterDate`)
+  }
 }

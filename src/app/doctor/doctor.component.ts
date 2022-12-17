@@ -4,7 +4,7 @@ import {BehaviorSubject, Observable, switchMap, tap} from "rxjs";
 import {DoctorModel} from "../interfaces/doctor.model";
 import {MatDialog} from "@angular/material/dialog";
 import {DialogDoctorComponent} from "../dialog-doctor/dialog-doctor.component";
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormBuilder} from "@angular/forms";
 
 
 @Component({
